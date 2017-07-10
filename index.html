@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>下载</title>
+    <link rel="stylesheet" type="text/css" href="css/cube.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <script src="js/jquery-2.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/init.js" type="text/javascript" charset="utf-8"></script>
+    <style>
+        .xiazai{
+            width:100%;
+            height:100%;
+        }
+        .biaoti{
+            height:2.5rem;
+            background-color:#F7F7F7;
+            padding:12px 30px;
+        }
+        .jiantou{
+            width:10%;
+            float:left;
+            text-align: center;
+        }
+        .jiantou2{
+            width:1.875rem;
+            height:1.5rem;
+        }
+        .biao1{
+            width:70%;
+            float:left;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        .bangzhu{
+            display:block;
+            width:20%;
+            float:right;
+            text-align: center;
+            font-size: 0.875rem;
+        }
+
+        .neirong{
+            padding: 3.7rem 2rem;
+        }
+        .img1{
+            width:100%;
+            height:100%;
+        }
+        .jindu{
+            padding:0 2.5rem;
+            text-align: center;
+        }
+        .baifenbai{
+            color:#222222;
+            font-size: 1.1rem;
+        }
+        .jiazaineirong{
+            color:#858585;
+            font-size: 0.8rem;
+        }
+        .jindutiao{
+            width:13rem;
+            height:1.25rem;
+            border-radius: 1.25rem;
+            background-color:#ecf0f3;
+            margin-top:0.8rem;
+        }
+        .progress{
+            width:0rem;
+            height:1.25rem;
+            border-radius: 1.25rem;
+            background-color:#7ed321;
+            margin-top:0.8rem;
+            transition-duration:0.3s;
+        }
+    </style>
+</head>
+<body>
+    <div class="xiazai">
+        <div class="biaoti">
+            <div class="jiantou">
+                <img src="../iphoneBST/img/timg.jpg" class="jiantou2"/>
+            </div>
+            <div class="biao1">号码识别设置</div>
+            <a href="#" class="bangzhu">帮助</a>
+        </div>
+        <div class="neirong">
+            <img src="../iphoneBST/img/bg_gengxin@2x.png" class="img1"/>
+        </div>
+        <div class="jindu">
+            <div class="baifenbai">
+                <span id="shuzi">0</span>%
+            </div>
+            <p class="jiazaineirong" id="jinduneirong">正在下载号码识别基础数据包<span id="slhao"></span></p>
+            
+            <div class="jindutiao">
+                <div class="progress" id="progress"></div>    
+            </div>
+        
+    </div>
+    <script>
+        suzi=document.getElementById("shuzi");
+        jinduneirong=document.getElementById("jinduneirong");
+        progress=document.getElementById("progress");
+        slhao=document.getElementById("slhao");
+        var num=0;
+        var dian='.';
+        function text(){
+            num=num+0.13
+            progress.style.width=num+'rem';
+            time=setTimeout(text,300); 
+            slhao.style.width=0+'px';
+            suzi.innerHTML=time;
+                if(time%3==0){
+                    slhao.innerHTML="";
+                }
+                slhao.innerHTML+=dian;
+            if(time>=100){
+                suzi.innerHTML=100;
+                progress.style.width=13+'rem';
+                jinduneirong.innerHTML="数据包加载完成";
+            }
+            if(time==104){
+                clearInterval(time); 
+                window.open('../iphoneBST/index1.html');  
+            }
+        }
+        text();
+    </script>
+</body>
+</html>

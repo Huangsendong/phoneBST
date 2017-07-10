@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>下载</title>
+    <link rel="stylesheet" type="text/css" href="css/cube.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <script src="js/jquery-2.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/init.js" type="text/javascript" charset="utf-8"></script>
+    <style>
+        .xiazai{
+            width:100%;
+            height:100%;
+        }
+        .biaoti{
+            height:2.5rem;
+            background-color:#F7F7F7;
+            padding:12px 30px;
+        }
+        .jiantou{
+            width:10%;
+            float:left;
+            text-align: center;
+        }
+        .jiantou2{
+            width:1.875rem;
+            height:1.5rem;
+        }
+        .biao1{
+            width:70%;
+            float:left;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .gengxin{
+            width:100%;
+            line-height:2rem;
+            border-radius: 2rem;
+            border: 2px solid #81bfff;
+            background-color:#62b0ff;
+            margin-top:1rem;
+            text-align: center;
+            color:#FFF;
+            font-size: 1rem;
+        }
+        .riqi{
+            color:#8fccff;
+            margin-top:0.9rem;
+            text-align: center;
+            font-weight: 500;
+            font-size: 0.7rem;
+        }
+        .jindu>div{
+            height:3rem;
+            border-bottom:1px solid #999;
+            padding:5% 5%;
+        }
+        .bangzhu{
+            display:block;
+            width:20%;
+            float:right;
+            text-align: center;
+            font-size: 0.875rem;
+        }
+        .img1{
+            width:100%;
+            height:100%;
+        }
+        .neirong{
+            width:100%;
+            background-color:#278DFF;
+        }
+        .neirong1{
+            padding:10% 20%;
+        }
+
+        .yang{
+            float:left;
+        }
+        .yang>img{
+            width:1rem;
+            height:1rem;
+        }
+        .yang2{
+            float:right;
+        }
+        .new{
+            width:2rem;
+            height:1rem;
+            border-radius: 1rem;
+            border:1px solid red;
+            text-align: center;
+            color: red;
+            float:left;
+            margin-right:0.5rem;
+            font-size: 0.5rem;
+        }
+        .yang>span{
+            font-size: 0.8rem;
+            color:#222222;
+        }
+        .gx{
+            width:100%;
+            line-height:2rem;
+            border-radius: 2rem;
+            background-color:#1987f7;
+            margin-top:1rem;
+            text-align: center;
+            color:#FFF;
+            font-size: 1rem;
+        }
+        .kaiguan{
+            width:2.5rem;
+            height:1rem;
+            border-radius: 1rem;
+            background-color:#999;
+            position: relative;
+        }
+        .anniu{
+            width:1rem;
+            height:1rem;
+            border-radius: 1rem;
+            position: absolute;
+            left:0;
+            top:0;
+            background-color:#F1F1F1;
+            transition-duration:0.5s;
+        }
+    </style>
+</head>
+<body>
+    <div class="xiazai">
+        <div class="biaoti">
+            <div class="jiantou">
+                <img src="../iphoneBST/img/timg.jpg" class="jiantou2"/>
+            </div>
+            <div class="biao1">号码识别设置</div>
+            <a href="#" class="bangzhu">帮助</a>
+        </div>
+
+        <div class="neirong">
+            <div class="neirong1">
+                <img src="../iphoneBST/img/bg_dagou@2x.png" class="img1"/>
+                <div class="gengxin" id="gengxin" onclick="tht()">
+                    检查更新  
+                </div>
+                <p class="riqi">上次更新日期<span>2016.9.22</span></p>
+            </div>
+        </div>
+        <div class="jindu">
+            <div>
+                <div class="yang">
+                    <img src="../iphoneBST/img/iocn_wenjianbao@2x.png"/>
+                    <span>号码扩展包</span>
+                </div>
+                <div class="yang2">
+                    <div class="new">NEW</div>
+                    <a href="#">></a>
+                </div>
+            </div>
+            <div>
+                <div class="yang">
+                    <img src="../iphoneBST/img/iocn_wi-fi@2x.png"/>
+                    <span>Wi-Fi下自动更新</span>
+                </div>
+                <div class="yang2">
+                    <div class="kaiguan" id="kaiguan">
+                        <div class="anniu" id="anniu"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            var l="更新内容中<span id='dian'></span";
+            gengxin=document.getElementById('gengxin');
+            kaiguan=document.getElementById('kaiguan');
+            anniu=document.getElementById('anniu');
+            qiehuan=true;
+            h=".";
+            function tht(){
+                gengxin.innerHTML=l;
+                gengxin.className="gx";
+               
+                function tnt(){
+                    var dian=document.getElementById("dian"); 
+                    time=setTimeout(tnt,1000);
+                    if(time%3==0){
+                        dian.innerHTML="";
+                    }
+                    dian.innerHTML+=h;
+                    if(time==15){
+                        gengxin.innerHTML='已是最新版本';
+                        clearInterval(time);
+                    }
+                }
+                tnt();
+            }
+
+            kaiguan.onclick=function(){
+                if(qiehuan==true){
+                    kaiguan.style.backgroundColor="#92D2FF";
+                    anniu.style.backgroundColor="#26A5FF";
+                    anniu.style.left="1.5rem";
+                    qiehuan=false;
+                }else{
+                    kaiguan.style.backgroundColor="#999";
+                    anniu.style.backgroundColor="#F1F1F1";
+                    anniu.style.left="0";
+                    qiehuan=true;                   
+                }
+            }
+        </script>
+</body>
+</html>
